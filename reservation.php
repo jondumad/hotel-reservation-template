@@ -1,81 +1,79 @@
-<?php include_once('header.php'); ?>
+<?php
+include_once('header.php');
+include_once('koneksi.php');
+?>
 
 <section class="content">
     <div class="container-fluid">
-        <div class="block-header">
-            <h2>Reservation</h2>
-        </div>
+        <!-- Basic Examples -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
                         <h2>
-                            STRIPED ROWS
-                            <small>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code></small>
+                            Reservation Table
                         </h2>
-                        <ul class="header-dropdown m-r--5">
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">more_vert</i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else here</a></li>
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
-                    <div class="body table-responsive">
-                        <table class="table table-striped">
-                            <thead>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>No. Reservasi</th>
+                                        <th>No. Kamar</th>
+                                        <th>No. Tamu</th>
+                                        <th>Tanggal Pesan</th>
+                                        <th>Jam Pesan</th>
+                                        <th>Tanggal Check-In</th>
+                                        <th>Tanggal Check-Out</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+
                                 <tr>
-                                    <th>#</th>
-                                    <th>FIRST NAME</th>
-                                    <th>LAST NAME</th>
-                                    <th>USERNAME</th>
+                                    <?php
+                                    $no = 1;
+                                    $reservations = query("SELECT * FROM `reservations`");
+                                    foreach ($reservations as $reservation) : ?>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $reservation['id_reservasi'] ?></td>
+                                        <td><?= $reservation['id_kamar'] ?></td>
+                                        <td><?= $reservation['id_tamu'] ?></td>
+                                        <td><?= $reservation['tgl_reservasi'] ?></td>
+                                        <td><?= $reservation['jam_reservasi'] ?></td>
+                                        <td><?= $reservation['tgl_checkin'] ?></td>
+                                        <td><?= $reservation['tgl_checkout'] ?></td>
+                                        <td><?= $reservation['status'] ?></td>
+                                        <td>
+                                            <button type="button" class="btn btn-success waves-effect">Edit</button>
+                                            <button type="button" class="btn btn-danger waves-effect">Delete</button>
+                                        </td>
+                                    <?php endforeach; ?>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Larry</td>
-                                    <td>Jellybean</td>
-                                    <td>@lajelly</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Larry</td>
-                                    <td>Kikat</td>
-                                    <td>@lakitkat</td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                                <tfoot>
+                                    <tr>
+                                        <th>No. Reservasi</th>
+                                        <th>No. Kamar</th>
+                                        <th>No. Tamu</th>
+                                        <th>Tanggal Pesan</th>
+                                        <th>Jam Pesan</th>
+                                        <th>Tanggal Check-In</th>
+                                        <th>Tanggal Check-Out</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- #END# Striped Rows -->
-    </div>
 </section>
-
 
 <?php include_once('footer.php'); ?>

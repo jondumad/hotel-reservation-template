@@ -1,3 +1,6 @@
+<?php 
+include_once 'function.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +17,8 @@
 
     <!-- Bootstrap Core Css -->
     <link href="assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets\plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css">
 
     <!-- Waves Effect Css -->
     <link href="assets/plugins/node-waves/waves.css" rel="stylesheet" />
