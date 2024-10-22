@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once 'function.php';
 ?>
 <!DOCTYPE html>
@@ -95,25 +95,12 @@ include_once 'function.php';
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
                     <div class="email">john.doe@example.com</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
                     <li>
                         <a href="index.php">
                             <i class="material-icons">home</i>
@@ -121,9 +108,33 @@ include_once 'function.php';
                         </a>
                     </li>
                     <li>
+                        <a href="checkin.php">
+                            <i class="material-icons">input</i>
+                            <span>Check In</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="checkout.php">
+                            <i class="material-icons">output</i>
+                            <span>Check Out</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="reservation.php">
                             <i class="material-icons">event</i>
                             <span>Reservation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="room.php">
+                            <i class="material-icons">meeting_room</i>
+                            <span>Room</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="guest.php">
+                            <i class="material-icons">group</i>
+                            <span>Guest</span>
                         </a>
                     </li>
                     <li>
@@ -181,14 +192,6 @@ include_once 'function.php';
                             <div class="indigo"></div>
                             <span>Indigo</span>
                         </li>
-                        <li data-theme="blue">
-                            <div class="blue"></div>
-                            <span>Blue</span>
-                        </li>
-                        <li data-theme="light-blue">
-                            <div class="light-blue"></div>
-                            <span>Light Blue</span>
-                        </li>
                         <li data-theme="cyan">
                             <div class="cyan"></div>
                             <span>Cyan</span>
@@ -220,26 +223,6 @@ include_once 'function.php';
                         <li data-theme="orange">
                             <div class="orange"></div>
                             <span>Orange</span>
-                        </li>
-                        <li data-theme="deep-orange">
-                            <div class="deep-orange"></div>
-                            <span>Deep Orange</span>
-                        </li>
-                        <li data-theme="brown">
-                            <div class="brown"></div>
-                            <span>Brown</span>
-                        </li>
-                        <li data-theme="grey">
-                            <div class="grey"></div>
-                            <span>Grey</span>
-                        </li>
-                        <li data-theme="blue-grey">
-                            <div class="blue-grey"></div>
-                            <span>Blue Grey</span>
-                        </li>
-                        <li data-theme="black">
-                            <div class="black"></div>
-                            <span>Black</span>
                         </li>
                     </ul>
                 </div>
