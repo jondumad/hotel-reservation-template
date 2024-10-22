@@ -3,7 +3,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Check-In</h2>
+            <h2>Check-Out</h2>
         </div>
         
     </div>
