@@ -5,6 +5,7 @@ include_once('koneksi.php');
 
 <section class="content">
     <div class="container-fluid">
+        <!-- Alert -->
         <?php
         if (isset($_POST['simpan'])) {
             if (tambah_reservasi($_POST) > 0) {
@@ -23,6 +24,8 @@ include_once('koneksi.php');
             }
         }
         ?>
+        <!-- #END# Alert -->
+        
         <!-- Data Tables -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -50,12 +53,11 @@ include_once('koneksi.php');
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
-
-                                <tr>
-                                    <?php
-                                    $no = 1;
-                                    $reservations = query("SELECT * FROM `reservations`");
-                                    foreach ($reservations as $reservation) : ?>
+                                <?php
+                                $no = 1;
+                                $reservations = query("SELECT * FROM `reservations`");
+                                foreach ($reservations as $reservation) : ?>
+                                    <tr>
                                         <td><?= $no++; ?></td>
                                         <td><?= $reservation['id_reservasi'] ?></td>
                                         <td><?= $reservation['id_kamar'] ?></td>
@@ -66,12 +68,11 @@ include_once('koneksi.php');
                                         <td><?= $reservation['tgl_checkout'] ?></td>
                                         <td><?= $reservation['status'] ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-success waves-effect">Edit</button>
+                                            <button type="button" class="btn btn-success waves-effect" href="edit-reservation.php?id_reservasi=<?= $reservation['id_reservasi'] ?>">Edit</button>
                                             <button type="button" class="btn btn-danger waves-effect">Delete</button>
                                         </td>
-                                    <?php endforeach; ?>
-                                </tr>
-
+                                    </tr>
+                                <?php endforeach; ?>
                                 <tfoot>
                                     <tr>
                                         <th>No. Reservasi</th>
@@ -182,7 +183,6 @@ include_once('koneksi.php');
             </div>
         </div>
         <!-- #END# Modal -->
-
     </div>
 </section>
 
