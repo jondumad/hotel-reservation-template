@@ -2,7 +2,6 @@
 include_once('header.php');
 include_once('koneksi.php');
 ?>
-
 <section class="content">
     <div class="container-fluid">
         <!-- Alert -->
@@ -11,30 +10,30 @@ include_once('koneksi.php');
             if (tambah_reservasi($_POST) > 0) {
         ?>
                 <div class="alert alert-success" role="alert">
-                    Data Reservasi Berhasil Disimpan!
+                    Reservation data has been successfully saved!
                 </div>
 
             <?php
             } else {
             ?>
                 <div class="alert alert-danger" role="alert">
-                    Data Reservasi Gagal Disimpan!
+                    Failed to save reservation data!
                 </div>
         <?php
             }
         }
         ?>
         <!-- #END# Alert -->
-        
+
         <!-- Data Tables -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h1>Data Reservasi</h1>
+                        <h1>Reservation Data</h1>
                         <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#tambahModal">
                             <i class="material-icons">library_add</i>
-                            <span>Tambah Data Reservasi</span>
+                            <span>Add Reservation Data</span>
                         </button>
                     </div>
                     <div class="body">
@@ -42,15 +41,16 @@ include_once('koneksi.php');
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>
-                                        <th>No. Reservasi</th>
-                                        <th>No. Kamar</th>
-                                        <th>No. Tamu</th>
-                                        <th>Tanggal Pesan</th>
-                                        <th>Jam Pesan</th>
-                                        <th>Tanggal Check-In</th>
-                                        <th>Tanggal Check-Out</th>
+                                        <th>No.</th>
+                                        <th>Reservation ID</th>
+                                        <th>Room ID</th>
+                                        <th>Guest ID</th>
+                                        <th>Reservation Date</th>
+                                        <th>Reservation Time</th>
+                                        <th>Check-in Date</th>
+                                        <th>Check-out Date</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <?php
@@ -68,22 +68,23 @@ include_once('koneksi.php');
                                         <td><?= $reservation['tgl_checkout'] ?></td>
                                         <td><?= $reservation['status'] ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-success waves-effect" href="edit-reservation.php?id_reservasi=<?= $reservation['id_reservasi'] ?>">Edit</button>
-                                            <button type="button" class="btn btn-danger waves-effect">Delete</button>
+                                            <a href="edit-reservation.php?id_reservasi=<?= $reservation['id_reservasi'] ?>" class="btn btn-success waves-effect">Edit</a>
+                                            <a onclick="confirm('Are you sure?')" class="btn btn-danger waves-effect" href="delete_reservation.php?id_reservasi=<?= $reservation['id_reservasi'] ?>">Delete</a>
                                         </td>
-                                    </tr>
+                                    </tr>   
                                 <?php endforeach; ?>
                                 <tfoot>
                                     <tr>
-                                        <th>No. Reservasi</th>
-                                        <th>No. Kamar</th>
-                                        <th>No. Tamu</th>
-                                        <th>Tanggal Pesan</th>
-                                        <th>Jam Pesan</th>
-                                        <th>Tanggal Check-In</th>
-                                        <th>Tanggal Check-Out</th>
+                                        <th>No.</th>
+                                        <th>Reservation ID</th>
+                                        <th>Room ID</th>
+                                        <th>Guest ID</th>
+                                        <th>Reservation Date</th>
+                                        <th>Reservation Time</th>
+                                        <th>Check-in Date</th>
+                                        <th>Check-out Date</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -114,7 +115,7 @@ include_once('koneksi.php');
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tambah Data Reservasi</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add Reservation Data</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -122,45 +123,61 @@ include_once('koneksi.php');
                     <div class="modal-body">
                         <form method="post" action="" enctype="multipart/form-data">
                             <div class="form-group row">
-                                <label for="id_reservasi" class="col-sm-3 col-form-label">No. Reservasi</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="id_reservasi" id="id_reservasi">
+                                <div class="form-group row align-items-center">
+                                    <label for="id_reservasi" class="col-sm-3 col-form-label">Reservation ID</label>
+                                    <div class="col-sm-8">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="id_reservasi" id="id_reservasi" value="<?= $kodeReservasi ?>">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="id_kamar" class="col-sm-3 col-form-label">No. Kamar</label>
+                                <label for="id_kamar" class="col-sm-3 col-form-label">Room ID</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="id_kamar" id="id_kamar">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" name="id_kamar" id="id_kamar">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="id_tamu" class="col-sm-3 col-form-label">No. Tamu</label>
+                                <label for="id_tamu" class="col-sm-3 col-form-label">Guest ID</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="id_tamu" id="id_tamu">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" name="id_tamu" id="id_tamu">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tgl_reservasi" class="col-sm-3 col-form-label">Tanggal Pesan</label>
+                                <label for="tgl_reservasi" class="col-sm-3 col-form-label">Reservation Date</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" name="tgl_reservasi" id="tgl_reservasi">
+                                    <div class="form-line">
+                                        <input type="date" class="form-control" name="tgl_reservasi" id="tgl_reservasi">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="jam_reservasi" class="col-sm-3 col-form-label">Jam Pesan</label>
+                                <label for="jam_reservasi" class="col-sm-3 col-form-label">Reservation Time</label>
                                 <div class="col-sm-8">
-                                    <input type="time" class="form-control" name="jam_reservasi" id="jam_reservasi">
+                                    <div class="form-line">
+                                        <input type="time" class="form-control" name="jam_reservasi" id="jam_reservasi">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tgl_checkin" class="col-sm-3 col-form-label">Tanggal Check-In</label>
+                                <label for="tgl_checkin" class="col-sm-3 col-form-label">Check-in Date</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" name="tgl_checkin" id="tgl_checkin">
+                                    <div class="form-line">
+                                        <input type="date" class="form-control" name="tgl_checkin" id="tgl_checkin">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tgl_checkout" class="col-sm-3 col-form-label">Tanggal Check-Out</label>
+                                <label for="tgl_checkout" class="col-sm-3 col-form-label">Check-out Date</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" name="tgl_checkout" id="tgl_checkout">
+                                    <div class="form-line">
+                                        <input type="date" class="form-control" name="tgl_checkout" id="tgl_checkout">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -174,8 +191,8 @@ include_once('koneksi.php');
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-                                <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" name="simpan">Save</button>
                             </div>
                         </form>
                     </div>
