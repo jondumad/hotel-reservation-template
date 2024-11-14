@@ -3,21 +3,41 @@
 
     <!-- Bootstrap Core Js -->
     <script src="assets/plugins/bootstrap/js/bootstrap.js"></script>
-
+    
     <!-- Select Plugin Js -->
     <script src="assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
+    
     <!-- Slimscroll Plugin Js -->
     <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
+    
     <!-- Waves Effect Plugin Js -->
     <script src="assets/plugins/node-waves/waves.js"></script>
-
+    
+    <!-- Autosize Plugin Js -->
+    <script src="assets/plugins/autosize/autosize.js"></script>
+    
+    <!-- Moment Plugin Js -->
+    <script src="assets/plugins/momentjs/moment.js"></script>
+    
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    
+    <!-- Bootstrap Datepicker Plugin Js -->
+    <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    
     <!-- Custom Js -->
     <script src="assets/js/admin.js"></script>
-
+    <script src="assets/js/pages/forms/basic-form-elements.js"></script>    
+    
     <!-- Demo Js -->
     <script src="assets/js/demo.js"></script>
+
+
+
+
+
+
+
 
     <!-- Jquery DataTable Plugin Js -->
     <script src="assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
@@ -42,6 +62,13 @@
                 });
             }, 2000);
         });
+        $('#gantiPassword').on('show.bs.modal', function(event){
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            console.log(id)
+            var modal = $(this)
+            modal.find('.modal-body #id_user').val(id)
+        })
     </script>
     </body>
 

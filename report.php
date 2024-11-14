@@ -3,9 +3,9 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Report</h2>
+            <h2>Dashboard Admin</h2>
         </div>
-        
+
     </div>
 </section>
 
