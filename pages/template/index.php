@@ -8,6 +8,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/koneksi.ph
         <div class="block-header">
             <h2>Dashboard Admin</h2>
         </div>
+
     </div>
 </section>
 <?php include_once('footer.php'); ?>

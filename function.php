@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 require_once('koneksi.php');
 
 // Execute a database query and return the result as an array
