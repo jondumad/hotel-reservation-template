@@ -1,8 +1,8 @@
 <?php
-include_once('header.php');
-include_once('koneksi.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/pages/template/header.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/koneksi.php');
 ?>
-
+?>
 <section class="content">
     <div class="container-fluid">
         <!-- Alert -->
@@ -185,4 +185,4 @@ include_once('koneksi.php');
     </div>
 </section>
 
-<?php include_once('footer.php'); ?>
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/pages/template/footer.php'); ?>

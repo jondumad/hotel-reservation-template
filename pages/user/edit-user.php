@@ -1,6 +1,6 @@
 <?php
-include_once('header.php');
-require_once('function.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/pages/template/header.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/function.php');
 ?>
 
 <section class="content">
@@ -69,4 +69,5 @@ require_once('function.php');
 </section>
 
 
-<?php include_once('footer.php'); ?>
+<?php
+include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/pages/template/footer.php'); ?>
