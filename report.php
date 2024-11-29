@@ -1,4 +1,7 @@
-<?php include_once('header.php'); ?>
+<?php 
+include_once('header.php'); 
+require_once('function.php');
+?>
 
 <section class="content">
     <div class="container-fluid">
@@ -38,10 +41,9 @@
                             </span>
                         </div>
 
+                        <br><br>
                         <div class="col-auto">
-                            <br><br>
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                <button class="btn btn-primary waves-effect" data-type="success">Tampilkan</button>
+                                <button type="submit" name="tampilkan" class="btn btn-primary mb-2">Tampilkan</button>
                             </div>
                         </div>
                     </div>
