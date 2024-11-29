@@ -25,7 +25,11 @@ include_once 'function.php';
 
     <!-- Animation Css -->
     <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+    <!-- Wait Me Css -->
+    <link href="assets/plugins/waitme/waitMe.css" rel="stylesheet" />
 
+    <!-- Bootstrap Select Css -->
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
     <!-- Bootstrap Material Datetimepicker Css -->
     <link rel="stylesheet" href="assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css">
 
@@ -34,6 +38,12 @@ include_once 'function.php';
 
     <!-- Custom Css -->
     <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="assets/css/themes/all-themes.css" rel="stylesheet" />
