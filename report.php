@@ -2,7 +2,7 @@
 
 <section class="content">
     <div class="container-fluid">
-        <div class="card">
+         <div class="card">
             <div class="header">
                 <h1 class="h3 mb-4 text-black-800">Laporan Tamu</h1>
                 <ul class="header-dropdown m-r--5">
