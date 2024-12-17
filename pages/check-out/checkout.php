@@ -1,25 +1,34 @@
 <?php
-include_once('header.php');
-include_once('koneksi.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/pages/template/header.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/koneksi.php');
 ?>
 <section class="content">
     <div class="container-fluid">
         <!-- Alert -->
         <?php
         if (isset($_POST['simpan'])) {
-            if (tambah_reservasi($_POST) > 0) {
-        ?>
-                <div class="alert alert-success" role="alert">
-                    Reservation data has been successfully saved!
-                </div>
+            try {
+                $result = tambah_reservasi($_POST);
 
-            <?php
-            } else {
-            ?>
-                <div class="alert alert-danger" role="alert">
-                    Failed to save reservation data!
-                </div>
-        <?php
+                if ($result > 0) {
+                    echo '<div class="alert alert-success" role="alert">
+                    Reservation data has been successfully saved!
+                    </div>';
+                } else {
+                    throw new Exception("The operation returned a failure. Please verify your input and try again.");
+                }
+            } catch (Exception $e) {
+                $errorMessage = $e->getMessage();
+
+                // Additional database error reporting
+                if (isset($koneksi) && mysqli_error($koneksi)) {
+                    $dbError = mysqli_error($koneksi);
+                    $errorMessage .= " Database error: $dbError";
+                }
+
+                echo '<div class="alert alert-danger" role="alert">
+                Failed to save reservation data. Error details: ' . htmlspecialchars($errorMessage) . '
+                </div>';
             }
         }
         ?>
@@ -53,26 +62,30 @@ include_once('koneksi.php');
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <?php
-                                $no = 1;
-                                $reservations = query("SELECT * FROM `reservations`");
-                                foreach ($reservations as $reservation) : ?>
-                                    <tr>
-                                        <td><?= $no++; ?></td>
-                                        <td><?= $reservation['id_reservasi'] ?></td>
-                                        <td><?= $reservation['id_kamar'] ?></td>
-                                        <td><?= $reservation['id_tamu'] ?></td>
-                                        <td><?= $reservation['tgl_reservasi'] ?></td>
-                                        <td><?= $reservation['jam_reservasi'] ?></td>
-                                        <td><?= $reservation['tgl_checkin'] ?></td>
-                                        <td><?= $reservation['tgl_checkout'] ?></td>
-                                        <td><?= $reservation['status'] ?></td>
-                                        <td>
-                                            <a href="edit-reservation.php?id_reservasi=<?= $reservation['id_reservasi'] ?>" class="btn btn-success waves-effect">Edit</a>
-                                            <a onclick="confirm('Are you sure?')" class="btn btn-danger waves-effect" href="delete_reservation.php?id_reservasi=<?= $reservation['id_reservasi'] ?>">Delete</a>
-                                        </td>
-                                    </tr>   
-                                <?php endforeach; ?>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    $reservations = query("SELECT * FROM `reservations`");
+                                    foreach ($reservations as $reservation) : ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($no++); ?></td>
+                                            <td><?= htmlspecialchars($reservation['id_reservasi'] ?? 'N/A') ?></td>
+                                            <td><?= htmlspecialchars($reservation['id_kamar'] ?? 'N/A') ?></td>
+                                            <td><?= htmlspecialchars($reservation['id_tamu'] ?? 'N/A') ?></td>
+                                            <td><?= htmlspecialchars($reservation['tgl_reservasi'] ?? 'N/A') ?></td>
+                                            <td><?= htmlspecialchars($reservation['jam_reservasi'] ?? 'N/A') ?></td>
+                                            <td><?= htmlspecialchars($reservation['tgl_checkin'] ?? 'N/A') ?></td>
+                                            <td><?= htmlspecialchars($reservation['tgl_checkout'] ?? 'N/A') ?></td>
+                                            <td><?= htmlspecialchars($reservation['status'] ?? 'N/A') ?></td>
+                                            <td>
+                                                <a href="edit-reservation.php?id=<?= htmlspecialchars($reservation['id_reservasi']) ?>" class="btn btn-success waves-effect">Edit</a>
+                                                <a href="javascript:void(0);"
+                                                    onclick="if(confirm('Are you sure you want to delete this reservation?')) { window.location.href='delete_reservation.php?id=<?= htmlspecialchars($reservation['id_reservasi']) ?>'; }"
+                                                    class="btn btn-danger waves-effect">Delete</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>No.</th>
@@ -87,9 +100,6 @@ include_once('koneksi.php');
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
-                                <tbody>
-
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -203,4 +213,4 @@ include_once('koneksi.php');
     </div>
 </section>
 
-<?php include_once('footer.php'); ?>
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . '/hotel-reservation-template/pages/template/footer.php'); ?>
